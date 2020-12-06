@@ -1,27 +1,34 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Login v-if="toogle" />
+    <SignUp v-if="!toogle" />
+    <p>- OR - </p>
+    <button @click="toggleV()">
+      <span v-if="!toogle">Login</span>
+      <span v-if="toogle">Sign Up</span>
+    </button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Login from "@/components/Login.vue";
+import SignUp from "@/components/SignUp.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    Login,
+    SignUp,
   },
-  default() {
-    return {};
+  data() {
+    return {
+      toogle: false,
+    };
   },
-  mounted() {
-    setTimeout(() => {
-      this.$router.push("/about");
-      console.log("routing");
-    }, 2000);
+  methods: {
+    toggleV() {
+      this.toogle = !this.toogle;
+    },
   },
 };
 </script>
