@@ -1,12 +1,12 @@
 <template>
   <div class="login">
     <h2>Login</h2>
-    <form @submit.prevent="post">
+    <form @submit.prevent="login">
       <div class="formitem">
         <label for="uname"><b>email</b></label>
         <input
           name="uname"
-          type="text"
+          type="email"
           v-model="userdata.email"
           placeholder="Enter email"
           autocomplete="section-blue shipping street-address"
@@ -40,8 +40,22 @@ export default {
     };
   },
   methods: {
-    post() {
-      console.log("posting", this.userdata);
+    async login() {
+      console.log("somethign");
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.userdata),
+      };
+      const response = await fetch(
+        "http://localhost:8000/login",
+        requestOptions
+      );
+      const data = await response.json();
+    //   console.log("res", data);
+      if(data.status === 'successful'){
+          this.$router.push('/todo')
+      }
     },
   },
 };
