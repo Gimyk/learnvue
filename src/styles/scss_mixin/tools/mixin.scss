@@ -16,7 +16,7 @@
     padding: $pad;
     text-transform: uppercase;
     box-shadow: border(raise_shadow);
-    margin: 0.5em;
+    margin-bottom: 0.2em;
     cursor: pointer;
     $hover_color: color(primary_light);
     $hover_bg: color(primary_dark);
@@ -83,7 +83,7 @@
     width: 100%;
     padding: ($pad + 0.3);
     caret-color: color(primary);
-    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 @mixin form_def {

@@ -59,9 +59,18 @@ form {
 }
 
 .ul-clickable {
-    @include ul_clickable(.3em, 1em, rgb(0, 174, 255), white, red)
+    @include ul_clickable(0.3em, 1em, rgb(0, 174, 255), white, red);
 }
 
 .ul-unclickable {
-    @include ul_unclickable(.3em, 1em, null, red)
+    @include ul_unclickable(0.3em, 1em, null, red);
+}
+
+.router-link-active {
+    color: white !important;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

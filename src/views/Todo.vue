@@ -1,6 +1,7 @@
 <template>
   <div class="list">
     <div class="todos">
+      <h3>TODO's</h3>
       <ul class="ul-unclickable" v-if="todoLen > 0">
         <li v-for="(todo, index) in todolist" :key="index">
           {{ todo.name }}
@@ -11,6 +12,7 @@
       </p>
     </div>
     <form @submit.prevent="addTodo">
+      <h3>Create TODO</h3>
       <input type="text" v-model="todo.name" placeholder="Enter Todo Name" />
 
       <input v-model="todo.type" placeholder="Enter Todo Type" name="pwd" />
