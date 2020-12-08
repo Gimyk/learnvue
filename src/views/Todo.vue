@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { http_post, http_get } from "@/assets/http-handler.js";
 export default {
   name: "Todo",
   data() {
@@ -54,34 +55,16 @@ export default {
   methods: {
     async getTodos() {
       console.log("Fetching data");
-      const requestOptions = {
-        method: "GET",
-      };
-      const response = await fetch(
-        "http://localhost:8000/todos",
-        requestOptions
-      );
-      const data = await response.json();
-      console.log(data.data);
-      this.todolist = data.data;
+      const res_data = await http_get("todos");
+      if (res_data.status === "successful") {
+        this.todolist = res_data.data;
+      }
     },
 
     async addTodo() {
-      console.log("somethign todo adding");
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.todo),
-      };
-      const response = await fetch(
-        "http://localhost:8000/todos",
-        requestOptions
-      );
-      const data = await response.json();
-      if (data.status === "successful") {
-        // this.$router.push('/todo')
+      const res_data = await http_post("todos", this.todo);
+      if (res_data.status === "successful") {
         this.getTodos();
-        
       }
     },
   },

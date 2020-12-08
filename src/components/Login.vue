@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { http_post } from "@/assets/http-handler.js";
 export default {
   name: "Login",
   data() {
@@ -41,19 +42,9 @@ export default {
   },
   methods: {
     async login() {
-      console.log("somethign");
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.userdata),
-      };
-      const response = await fetch(
-        "http://localhost:8000/login",
-        requestOptions
-      );
-      const data = await response.json();
-    //   console.log("res", data);
-      if(data.status === 'successful'){
+      const res_data = await http_post('login',this.userdata)
+      console.log(res_data)
+      if(res_data.status === 'successful'){
           this.$router.push('/todo')
       }
     },

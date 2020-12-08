@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { http_post } from "@/assets/http-handler.js";
 export default {
   name: "Login",
   data() {
@@ -60,7 +61,11 @@ export default {
   },
   methods: {
     post() {
-      console.log("posting", this.userdata);
+      console.log("creating user ->", this.userdata);
+      const res_data = http_post('signup',this.userdata);
+      if (res_data.status === "successful") {
+        console.log("creating user", res_data);
+      }
     },
   },
 };
