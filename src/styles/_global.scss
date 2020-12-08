@@ -20,6 +20,44 @@ button {
     @include button_def();
 }
 
+.main {
+    padding: 1em;
+}
+
+.jumbotron {
+    @include center_item(5em);
+    @include column(3, 2);
+    box-shadow: border(thick_faint_shadow);
+    padding: ($pad + 1);
+    .center {
+        @include center_item(1em, right);
+    }
+    button {
+        width: 8em;
+    }
+}
+
+.table {
+    @extend %mat_table;
+}
+
+.btn_primary {
+    @include button_def("primary");
+}
+
+.btn_second {
+    @include button_def("second");
+}
+
+.card {
+    box-shadow: border(thin_shadow);
+    padding: $pad;
+}
+
+.grid {
+    @include grid(20em, 1em);
+}
+
 nav {
     @include nav();
 }
@@ -28,12 +66,25 @@ nav {
     @extend %overlay;
 }
 
-form {
-    // @include center_item(1em, null);
-    width: 100%;
+.form {
+    @include center_item(1em, right);
+    width: 90%;
     @extend %standard_form;
 }
 
 #dialogue {
     @extend %dialogue;
+}
+
+.fixedImage {
+    @include fixed_bg_image("./dump/bg.jpg", no-repeat);
+    @extend %fixedImage;
+}
+
+.ul-clickable {
+    @include ul_clickable(.3em, 1em, rgb(0, 174, 255), white, red)
+}
+
+.ul-unclickable {
+    @include ul_unclickable(.3em, 1em, null, red)
 }
