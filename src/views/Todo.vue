@@ -1,33 +1,19 @@
 <template>
   <div class="list">
-    <ul v-if="todoLen > 0">
-      <li v-for="(todo, index) in todolist" :key="index">
-        {{ todo.name }}
-      </li>
-    </ul>
-    <p v-if="todoLen == 0">
-      There seems to be no todo lists, add then at the bottom
-    </p>
+    <div class="todos">
+      <ul class="ul-unclickable" v-if="todoLen > 0">
+        <li v-for="(todo, index) in todolist" :key="index">
+          {{ todo.name }}
+        </li>
+      </ul>
+      <p v-if="todoLen == 0">
+        There seems to be no todo lists, add then at the bottom
+      </p>
+    </div>
     <form @submit.prevent="addTodo">
-      <div class="formitem">
-        <label for="tname"><b>Name</b></label>
-        <input
-          name="tname"
-          type="text"
-          v-model="todo.name"
-          placeholder="Enter Todo Name"
-        />
-      </div>
+      <input type="text" v-model="todo.name" placeholder="Enter Todo Name" />
 
-      <div class="formitem">
-        <label for="pwd"><b>Type</b></label>
-        <input
-          type="text"
-          v-model="todo.type"
-          placeholder="Enter Todo Type"
-          name="pwd"
-        />
-      </div>
+      <input v-model="todo.type" placeholder="Enter Todo Type" name="pwd" />
 
       <button type="submit">Create</button>
     </form>
@@ -74,5 +60,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style scoped lang="scss" src="@/styles/todo.scss"></style>
